@@ -5,20 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Convierte visitantes en clientes con landing pages de alto impacto. Más ventas, más clientes, más resultados para tu negocio.">
     <meta name="keywords" content="landing pages, más clientes, más ventas, crecimiento empresarial, presencia digital">
-    <meta name="author" content="Tu Empresa">
+    <meta name="author" content="ConvertPro">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Multiplica tus Ventas con Landing Pages que Convierten">
     <meta property="og:description" content="Deja de perder clientes. Convierte tu web en una máquina de ventas.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tudominio.com/og-image.jpg">
     
     <title>Landing Pages de Alto Impacto | Más Clientes, Más Ventas</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -30,34 +34,44 @@
 </head>
 <body>
     <!-- Cursor personalizado -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
 
     <!-- Loader -->
-    <div class="loader">
+    <div class="loader" id="loader">
         <div class="loader-content">
             <div class="loader-logo">
-                <span class="loader-text">Cargando</span>
-                <div class="loader-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <span class="loader-icon">◆</span>
+                <span class="loader-text">ConvertPro</span>
             </div>
             <div class="loader-bar">
-                <div class="loader-progress"></div>
+                <div class="loader-progress" id="loader-progress"></div>
             </div>
+            <span class="loader-percent" id="loader-percent">0%</span>
         </div>
     </div>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/1234567890?text=Hola%2C%20quiero%20información%20sobre%20las%20landing%20pages" 
+       class="whatsapp-float" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Contactar por WhatsApp">
+        <div class="whatsapp-pulse"></div>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="whatsapp-text">¿Dudas? ¡Escríbenos!</span>
+    </a>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
                 <span class="logo-icon">◆</span>
                 <span class="logo-text">ConvertPro</span>
             </a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#problema" class="nav-link">El Problema</a></li>
                 <li><a href="#solucion" class="nav-link">Solución</a></li>
                 <li><a href="#paquetes" class="nav-link">Paquetes</a></li>
@@ -70,7 +84,7 @@
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
             </a>
-            <button class="nav-toggle" aria-label="Menu">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -79,46 +93,51 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu">
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-bg"></div>
         <ul class="mobile-menu-links">
-            <li><a href="#problema">El Problema</a></li>
-            <li><a href="#solucion">Solución</a></li>
-            <li><a href="#paquetes">Paquetes</a></li>
-            <li><a href="#proceso">Proceso</a></li>
-            <li><a href="#testimonios">Resultados</a></li>
-            <li><a href="#contacto" class="mobile-cta">Quiero más clientes</a></li>
+            <li><a href="#problema" data-index="1">El Problema</a></li>
+            <li><a href="#solucion" data-index="2">Solución</a></li>
+            <li><a href="#paquetes" data-index="3">Paquetes</a></li>
+            <li><a href="#proceso" data-index="4">Proceso</a></li>
+            <li><a href="#testimonios" data-index="5">Resultados</a></li>
+            <li><a href="#contacto" class="mobile-cta" data-index="6">Quiero más clientes</a></li>
         </ul>
     </div>
 
     <main>
-        <!-- HERO SECTION -->
+        <!-- ============== HERO SECTION ============== -->
         <section id="hero" class="hero">
             <div class="hero-bg">
                 <div class="hero-gradient"></div>
                 <div class="hero-grid"></div>
-                <div class="hero-particles" id="particles"></div>
-                <div class="hero-glow"></div>
+                <div class="hero-orbs">
+                    <div class="orb orb-1"></div>
+                    <div class="orb orb-2"></div>
+                    <div class="orb orb-3"></div>
+                </div>
+                <div class="hero-noise"></div>
             </div>
             
             <div class="hero-content">
-                <div class="hero-badge">
+                <div class="hero-badge" id="hero-badge">
                     <span class="badge-dot"></span>
                     <span class="badge-text">+500 empresas ya multiplican sus ventas</span>
                 </div>
                 
-                <h1 class="hero-title">
-                    <span class="title-line">Deja de perder</span>
-                    <span class="title-line highlight">clientes</span>
-                    <span class="title-line">cada día</span>
+                <h1 class="hero-title" id="hero-title">
+                    <span class="title-line">Deja de <span class="text-gradient">perder</span></span>
+                    <span class="title-line"><span class="text-gradient">clientes</span> cada día</span>
                 </h1>
                 
-                <p class="hero-subtitle">
+                <p class="hero-subtitle" id="hero-subtitle">
                     Tu web actual está ahuyentando ventas. Creamos <strong>landing pages de alto impacto</strong> 
                     que convierten visitantes en clientes mientras duermes.
                 </p>
                 
-                <div class="hero-cta-group">
-                    <a href="#contacto" class="btn btn-primary btn-glow">
+                <div class="hero-cta-group" id="hero-ctas">
+                    <a href="#contacto" class="btn btn-primary btn-glow magnetic-btn">
+                        <span class="btn-bg"></span>
                         <span class="btn-text">Quiero más clientes ahora</span>
                         <span class="btn-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -126,132 +145,208 @@
                             </svg>
                         </span>
                     </a>
-                    <a href="#paquetes" class="btn btn-secondary">
-                        <span class="btn-text">Ver soluciones</span>
+                    <a href="https://wa.me/1234567890?text=Hola%2C%20quiero%20información" class="btn btn-whatsapp magnetic-btn" target="_blank">
+                        <span class="btn-bg"></span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        <span class="btn-text">Hablar por WhatsApp</span>
                     </a>
                 </div>
                 
-                <div class="hero-stats">
+                <div class="hero-stats" id="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-number" data-count="347">0</span>
-                        <span class="stat-symbol">%</span>
-                        <span class="stat-label">Aumento promedio en conversiones</span>
+                        <div class="stat-value">
+                            <span class="stat-number" data-count="347">0</span>
+                            <span class="stat-symbol">%</span>
+                        </div>
+                        <span class="stat-label">Aumento promedio<br>en conversiones</span>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <span class="stat-number" data-count="72">0</span>
-                        <span class="stat-symbol">hrs</span>
-                        <span class="stat-label">Tiempo de entrega</span>
+                        <div class="stat-value">
+                            <span class="stat-number" data-count="72">0</span>
+                            <span class="stat-symbol">hrs</span>
+                        </div>
+                        <span class="stat-label">Tiempo de<br>entrega</span>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <span class="stat-number" data-count="100">0</span>
-                        <span class="stat-symbol">%</span>
-                        <span class="stat-label">Satisfacción garantizada</span>
+                        <div class="stat-value">
+                            <span class="stat-number" data-count="100">0</span>
+                            <span class="stat-symbol">%</span>
+                        </div>
+                        <span class="stat-label">Satisfacción<br>garantizada</span>
                     </div>
                 </div>
             </div>
             
-            <div class="hero-scroll">
+            <div class="hero-scroll" id="hero-scroll">
                 <span>Descubre cómo</span>
                 <div class="scroll-indicator">
-                    <div class="scroll-dot"></div>
+                    <div class="scroll-line"></div>
+                </div>
+            </div>
+            
+            <!-- Hero Visual -->
+            <div class="hero-visual" id="hero-visual">
+                <div class="hero-mockup">
+                    <div class="mockup-browser">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="browser-url">tuempresa.com</div>
+                        </div>
+                        <div class="browser-content">
+                            <div class="mock-hero-area"></div>
+                            <div class="mock-content">
+                                <div class="mock-line w-80"></div>
+                                <div class="mock-line w-60"></div>
+                                <div class="mock-line w-40"></div>
+                            </div>
+                            <div class="mock-cards">
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                            </div>
+                            <div class="mock-cta"></div>
+                        </div>
+                    </div>
+                    <div class="mockup-badges">
+                        <div class="float-badge badge-conversions">
+                            <span class="badge-icon">📈</span>
+                            <span class="badge-value">+347%</span>
+                        </div>
+                        <div class="float-badge badge-leads">
+                            <span class="badge-icon">👥</span>
+                            <span class="badge-value">+89 leads</span>
+                        </div>
+                        <div class="float-badge badge-sales">
+                            <span class="badge-icon">💰</span>
+                            <span class="badge-value">$52k</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- PROBLEMA SECTION -->
+        <!-- ============== PROBLEMA SECTION ============== -->
         <section id="problema" class="section section-problema">
+            <div class="section-bg">
+                <div class="bg-gradient-radial"></div>
+            </div>
+            
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">El problema</span>
+                    <span class="section-tag">
+                        <span class="tag-dot"></span>
+                        El Problema
+                    </span>
                     <h2 class="section-title">
-                        <span class="title-reveal">¿Reconoces alguna</span>
-                        <span class="title-reveal highlight">de estas situaciones?</span>
+                        ¿Reconoces alguna de<br>
+                        <span class="text-gradient">estas situaciones?</span>
                     </h2>
+                    <p class="section-desc">
+                        Si alguna de estas te suena familiar, estás perdiendo dinero cada día que pasa.
+                    </p>
                 </div>
                 
                 <div class="problema-grid">
-                    <div class="problema-card" data-delay="0">
+                    <div class="problema-card">
+                        <div class="card-glow"></div>
                         <div class="problema-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                         </div>
                         <h3>Inviertes en publicidad pero nadie compra</h3>
-                        <p>Gastas dinero en anuncios que traen visitas, pero se van sin dejar rastro. Tu ROI es negativo.</p>
+                        <p>Gastas dinero en anuncios que traen visitas, pero se van sin dejar rastro. Tu inversión publicitaria desaparece sin resultados.</p>
                         <div class="problema-stat">
                             <span class="stat-bad">-67%</span>
                             <span>de las visitas abandonan en 3 segundos</span>
                         </div>
                     </div>
                     
-                    <div class="problema-card" data-delay="0.1">
+                    <div class="problema-card">
+                        <div class="card-glow"></div>
                         <div class="problema-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                         </div>
                         <h3>Tu web parece de hace 10 años</h3>
-                        <p>Los clientes juzgan tu negocio en 0.05 segundos. Una web anticuada destruye tu credibilidad instantáneamente.</p>
+                        <p>Los clientes juzgan tu negocio en 0.05 segundos. Una web anticuada destruye tu credibilidad instantáneamente y los envía a la competencia.</p>
                         <div class="problema-stat">
                             <span class="stat-bad">94%</span>
                             <span>de usuarios no confían en webs desactualizadas</span>
                         </div>
                     </div>
                     
-                    <div class="problema-card" data-delay="0.2">
+                    <div class="problema-card">
+                        <div class="card-glow"></div>
                         <div class="problema-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                             </svg>
                         </div>
                         <h3>Tu competencia te está robando clientes</h3>
-                        <p>Mientras dudas, ellos ya tienen presencia digital profesional y capturan a TUS clientes potenciales.</p>
+                        <p>Mientras dudas, ellos ya tienen presencia digital profesional y capturan a TUS clientes potenciales. Cada día que pasa, pierdes terreno.</p>
                         <div class="problema-stat">
                             <span class="stat-bad">$2.3M</span>
                             <span>perdidos al año por no tener presencia digital</span>
                         </div>
                     </div>
                     
-                    <div class="problema-card" data-delay="0.3">
+                    <div class="problema-card">
+                        <div class="card-glow"></div>
                         <div class="problema-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                <path d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
                             </svg>
                         </div>
                         <h3>No tienes forma de capturar leads</h3>
-                        <p>Los visitantes llegan, miran y se van para siempre. No tienes sistema para convertirlos en contactos.</p>
+                        <p>Los visitantes llegan, miran y se van para siempre. No tienes sistema para convertirlos en contactos y oportunidades de venta reales.</p>
                         <div class="problema-stat">
                             <span class="stat-bad">97%</span>
-                            <span>de visitantes nunca regresan</span>
+                            <span>de visitantes nunca regresan a tu web</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="problema-bottom">
-                    <div class="problema-quote">
-                        <div class="quote-icon">"</div>
-                        <p>Cada día que pasa sin una landing page optimizada, estás <span class="highlight">regalando dinero</span> a tu competencia.</p>
+                <div class="problema-cta">
+                    <div class="quote-box">
+                        <span class="quote-icon">"</span>
+                        <p>Cada día que pasa sin una landing page optimizada, estás <strong>regalando dinero</strong> a tu competencia.</p>
                     </div>
+                    <a href="#solucion" class="btn btn-ghost magnetic-btn">
+                        <span>Ver la solución</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- SOLUCION SECTION -->
+        <!-- ============== SOLUCION SECTION ============== -->
         <section id="solucion" class="section section-solucion">
-            <div class="solucion-bg">
-                <div class="solucion-gradient"></div>
+            <div class="section-bg dark">
+                <div class="bg-gradient-mesh"></div>
+                <div class="bg-pattern"></div>
             </div>
             
             <div class="container">
                 <div class="section-header light">
-                    <span class="section-tag">La solución</span>
+                    <span class="section-tag light">
+                        <span class="tag-dot"></span>
+                        La Solución
+                    </span>
                     <h2 class="section-title">
-                        <span class="title-reveal">Transforma tu negocio con</span>
-                        <span class="title-reveal highlight">Landing Pages que venden</span>
+                        Transforma tu negocio con<br>
+                        <span class="text-gradient">Landing Pages que venden</span>
                     </h2>
-                    <p class="section-subtitle">
+                    <p class="section-desc">
                         No creamos páginas web. Creamos <strong>máquinas de conversión</strong> diseñadas 
                         con un único objetivo: multiplicar tus ventas.
                     </p>
@@ -260,21 +355,25 @@
                 <div class="solucion-showcase">
                     <div class="showcase-visual">
                         <div class="showcase-mockup">
-                            <div class="mockup-screen">
-                                <div class="mockup-header">
-                                    <span></span><span></span><span></span>
-                                </div>
-                                <div class="mockup-content">
-                                    <div class="mockup-hero"></div>
-                                    <div class="mockup-sections">
-                                        <div class="mockup-block"></div>
-                                        <div class="mockup-block"></div>
-                                        <div class="mockup-block"></div>
+                            <div class="mockup-frame">
+                                <div class="mockup-screen">
+                                    <div class="screen-glow"></div>
+                                    <div class="screen-content">
+                                        <div class="mock-nav"></div>
+                                        <div class="mock-hero">
+                                            <div class="mock-title"></div>
+                                            <div class="mock-subtitle"></div>
+                                            <div class="mock-btn"></div>
+                                        </div>
+                                        <div class="mock-features">
+                                            <div class="mock-feature"></div>
+                                            <div class="mock-feature"></div>
+                                            <div class="mock-feature"></div>
+                                        </div>
                                     </div>
-                                    <div class="mockup-cta-area"></div>
                                 </div>
                             </div>
-                            <div class="mockup-glow"></div>
+                            <div class="mockup-reflection"></div>
                         </div>
                         
                         <div class="showcase-metrics">
@@ -304,50 +403,50 @@
                     
                     <div class="showcase-benefits">
                         <div class="benefit-item">
-                            <div class="benefit-check">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M5 13l4 4L19 7"/>
+                            <div class="benefit-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
                                 </svg>
                             </div>
                             <div class="benefit-content">
                                 <h4>Captura leads 24/7</h4>
-                                <p>Tu landing trabaja mientras duermes, generando contactos cualificados automáticamente.</p>
+                                <p>Tu landing trabaja mientras duermes, generando contactos cualificados automáticamente sin que tengas que hacer nada.</p>
                             </div>
                         </div>
                         
                         <div class="benefit-item">
-                            <div class="benefit-check">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M5 13l4 4L19 7"/>
+                            <div class="benefit-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                                 </svg>
                             </div>
                             <div class="benefit-content">
                                 <h4>Credibilidad instantánea</h4>
-                                <p>Proyecta una imagen premium que genera confianza desde el primer segundo.</p>
+                                <p>Proyecta una imagen premium que genera confianza desde el primer segundo. Tu marca se verá profesional y establecida.</p>
                             </div>
                         </div>
                         
                         <div class="benefit-item">
-                            <div class="benefit-check">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M5 13l4 4L19 7"/>
+                            <div class="benefit-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                                 </svg>
                             </div>
                             <div class="benefit-content">
                                 <h4>Optimizada para vender</h4>
-                                <p>Cada elemento diseñado estratégicamente para guiar al visitante hacia la acción.</p>
+                                <p>Cada elemento diseñado estratégicamente para guiar al visitante hacia la acción. Psicología de conversión aplicada.</p>
                             </div>
                         </div>
                         
                         <div class="benefit-item">
-                            <div class="benefit-check">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <path d="M5 13l4 4L19 7"/>
+                            <div class="benefit-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
                             </div>
                             <div class="benefit-content">
                                 <h4>ROI garantizado</h4>
-                                <p>Inversión que se paga sola. Resultados medibles y escalables desde el día 1.</p>
+                                <p>Inversión que se paga sola. Resultados medibles y escalables desde el día 1. Si no ves resultados, te devolvemos el dinero.</p>
                             </div>
                         </div>
                     </div>
@@ -355,15 +454,18 @@
             </div>
         </section>
 
-        <!-- PROPUESTA DE VALOR -->
+        <!-- ============== PROPUESTA SECTION ============== -->
         <section id="propuesta" class="section section-propuesta">
             <div class="container">
                 <div class="propuesta-grid">
                     <div class="propuesta-content">
-                        <span class="section-tag">¿Por qué elegirnos?</span>
-                        <h2 class="section-title">
-                            <span class="title-reveal">No somos diseñadores.</span>
-                            <span class="title-reveal highlight">Somos multiplicadores de ventas.</span>
+                        <span class="section-tag">
+                            <span class="tag-dot"></span>
+                            ¿Por qué elegirnos?
+                        </span>
+                        <h2 class="section-title left">
+                            No somos diseñadores.<br>
+                            <span class="text-gradient">Somos multiplicadores de ventas.</span>
                         </h2>
                         <p class="propuesta-text">
                             Mientras otros te venden "páginas bonitas", nosotros te entregamos 
@@ -372,24 +474,32 @@
                         </p>
                         
                         <div class="propuesta-features">
-                            <div class="feature-row">
-                                <div class="feature-item">
-                                    <span class="feature-number">01</span>
-                                    <span class="feature-text">Copywriting persuasivo incluido</span>
-                                </div>
-                                <div class="feature-item">
-                                    <span class="feature-number">02</span>
-                                    <span class="feature-text">Diseño basado en conversión</span>
+                            <div class="feature-item">
+                                <span class="feature-number">01</span>
+                                <div class="feature-content">
+                                    <span class="feature-title">Copywriting persuasivo</span>
+                                    <span class="feature-desc">Textos que conectan y venden</span>
                                 </div>
                             </div>
-                            <div class="feature-row">
-                                <div class="feature-item">
-                                    <span class="feature-number">03</span>
-                                    <span class="feature-text">Velocidad de carga optimizada</span>
+                            <div class="feature-item">
+                                <span class="feature-number">02</span>
+                                <div class="feature-content">
+                                    <span class="feature-title">Diseño estratégico</span>
+                                    <span class="feature-desc">Basado en psicología de conversión</span>
                                 </div>
-                                <div class="feature-item">
-                                    <span class="feature-number">04</span>
-                                    <span class="feature-text">100% adaptado a móviles</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-number">03</span>
+                                <div class="feature-content">
+                                    <span class="feature-title">Velocidad optimizada</span>
+                                    <span class="feature-desc">Carga en menos de 2 segundos</span>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-number">04</span>
+                                <div class="feature-content">
+                                    <span class="feature-title">100% responsive</span>
+                                    <span class="feature-desc">Perfecto en móvil, tablet y desktop</span>
                                 </div>
                             </div>
                         </div>
@@ -402,25 +512,56 @@
                                 <span class="comparison-label">Página web tradicional</span>
                             </div>
                             <ul class="comparison-list">
-                                <li>Diseño genérico sin estrategia</li>
-                                <li>Textos que no conectan</li>
-                                <li>Sin enfoque en conversión</li>
-                                <li>Meses de desarrollo</li>
-                                <li>Cero seguimiento de resultados</li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                                    Diseño genérico sin estrategia
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                                    Textos que no conectan ni venden
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                                    Sin enfoque en conversión
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                                    Meses de desarrollo
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                                    Cero seguimiento de resultados
+                                </li>
                             </ul>
                         </div>
                         
                         <div class="comparison-card good">
+                            <div class="comparison-badge">Nuestra solución</div>
                             <div class="comparison-header">
                                 <span class="comparison-icon">✓</span>
-                                <span class="comparison-label">Nuestra Landing Page</span>
+                                <span class="comparison-label">Landing Page ConvertPro</span>
                             </div>
                             <ul class="comparison-list">
-                                <li>Diseño estratégico que vende</li>
-                                <li>Copywriting que conecta y persuade</li>
-                                <li>Cada pixel optimizado para convertir</li>
-                                <li>Lista en 72 horas</li>
-                                <li>Métricas y análisis incluidos</li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                    Diseño estratégico que vende
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                    Copywriting que conecta y persuade
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                    Cada pixel optimizado para convertir
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                    Lista en 72 horas
+                                </li>
+                                <li>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                    Métricas y análisis incluidos
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -428,23 +569,26 @@
             </div>
         </section>
 
-        <!-- PAQUETES SECTION -->
+        <!-- ============== PAQUETES SECTION ============== -->
         <section id="paquetes" class="section section-paquetes">
-            <div class="paquetes-bg">
-                <div class="paquetes-gradient"></div>
-                <div class="paquetes-pattern"></div>
+            <div class="section-bg">
+                <div class="bg-gradient-radial"></div>
+                <div class="bg-grid"></div>
             </div>
             
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Soluciones</span>
+                    <span class="section-tag">
+                        <span class="tag-dot"></span>
+                        Soluciones
+                    </span>
                     <h2 class="section-title">
-                        <span class="title-reveal">Elige el nivel de</span>
-                        <span class="title-reveal highlight">crecimiento que necesitas</span>
+                        Elige el nivel de<br>
+                        <span class="text-gradient">crecimiento que necesitas</span>
                     </h2>
-                    <p class="section-subtitle">
+                    <p class="section-desc">
                         Tres soluciones diseñadas para diferentes etapas de tu negocio. 
-                        Todas incluyen nuestra garantía de satisfacción.
+                        <strong>Todas incluyen nuestra garantía de satisfacción 100%.</strong>
                     </p>
                 </div>
                 
@@ -454,7 +598,7 @@
                         <div class="paquete-header">
                             <span class="paquete-tag">Ideal para empezar</span>
                             <h3 class="paquete-name">Starter</h3>
-                            <p class="paquete-desc">Presencia profesional que genera confianza</p>
+                            <p class="paquete-desc">Presencia profesional que genera confianza y primeras ventas</p>
                         </div>
                         
                         <div class="paquete-price">
@@ -464,14 +608,14 @@
                         </div>
                         
                         <div class="paquete-ideal">
-                            <span class="ideal-label">Perfecto para:</span>
+                            <span class="ideal-icon">👤</span>
                             <span class="ideal-text">Emprendedores, freelancers y negocios nuevos</span>
                         </div>
                         
                         <ul class="paquete-features">
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span>Landing page de 1 página</span>
+                                <span>Landing page de 1 página completa</span>
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
@@ -487,6 +631,10 @@
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                <span>Integración con WhatsApp</span>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                                 <span>Entrega en 5 días</span>
                             </li>
                             <li>
@@ -495,25 +643,30 @@
                             </li>
                         </ul>
                         
-                        <div class="paquete-results">
-                            <div class="result-item">
+                        <div class="paquete-result">
+                            <span class="result-icon">📈</span>
+                            <div class="result-data">
                                 <span class="result-value">+150%</span>
-                                <span class="result-label">Más credibilidad</span>
+                                <span class="result-label">más credibilidad percibida</span>
                             </div>
                         </div>
                         
-                        <a href="#contacto" class="btn btn-outline paquete-btn">
+                        <a href="#contacto" class="btn btn-outline paquete-btn magnetic-btn">
                             <span>Empezar ahora</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                     
                     <!-- GROWTH - POPULAR -->
                     <div class="paquete-card popular" data-plan="growth">
                         <div class="paquete-badge">🔥 Más elegido</div>
+                        <div class="paquete-glow"></div>
                         <div class="paquete-header">
                             <span class="paquete-tag">Máximo crecimiento</span>
                             <h3 class="paquete-name">Growth</h3>
-                            <p class="paquete-desc">Sistema completo de generación de clientes</p>
+                            <p class="paquete-desc">Sistema completo de generación de clientes y ventas</p>
                         </div>
                         
                         <div class="paquete-price">
@@ -523,18 +676,18 @@
                         </div>
                         
                         <div class="paquete-ideal">
-                            <span class="ideal-label">Perfecto para:</span>
-                            <span class="ideal-text">PyMEs y negocios en crecimiento</span>
+                            <span class="ideal-icon">🏢</span>
+                            <span class="ideal-text">PyMEs y negocios en crecimiento activo</span>
                         </div>
                         
                         <ul class="paquete-features">
-                            <li>
+                            <li class="featured">
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span><strong>Todo de Starter +</strong></span>
+                                <span><strong>Todo lo de Starter +</strong></span>
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span>Landing page multipágina (hasta 5)</span>
+                                <span>Landing multipágina (hasta 5 secciones)</span>
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
@@ -542,11 +695,11 @@
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span>Animaciones profesionales</span>
+                                <span>Animaciones profesionales premium</span>
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span>Integración WhatsApp/Email</span>
+                                <span>Integración WhatsApp + Email</span>
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
@@ -554,23 +707,28 @@
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span>Entrega en 72 horas</span>
+                                <span>Entrega express: 72 horas</span>
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span>3 rondas de revisiones</span>
+                                <span>3 rondas de revisiones ilimitadas</span>
                             </li>
                         </ul>
                         
-                        <div class="paquete-results">
-                            <div class="result-item">
+                        <div class="paquete-result">
+                            <span class="result-icon">🚀</span>
+                            <div class="result-data">
                                 <span class="result-value">+347%</span>
-                                <span class="result-label">Más conversiones</span>
+                                <span class="result-label">aumento en conversiones</span>
                             </div>
                         </div>
                         
-                        <a href="#contacto" class="btn btn-primary paquete-btn">
+                        <a href="#contacto" class="btn btn-primary paquete-btn magnetic-btn">
+                            <span class="btn-bg"></span>
                             <span>Escalar mi negocio</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                     
@@ -579,7 +737,7 @@
                         <div class="paquete-header">
                             <span class="paquete-tag">Solución corporativa</span>
                             <h3 class="paquete-name">Enterprise</h3>
-                            <p class="paquete-desc">Ecosistema digital completo de ventas</p>
+                            <p class="paquete-desc">Ecosistema digital completo y automatizado de ventas</p>
                         </div>
                         
                         <div class="paquete-price">
@@ -589,14 +747,14 @@
                         </div>
                         
                         <div class="paquete-ideal">
-                            <span class="ideal-label">Perfecto para:</span>
+                            <span class="ideal-icon">🏆</span>
                             <span class="ideal-text">Empresas establecidas y marcas premium</span>
                         </div>
                         
                         <ul class="paquete-features">
-                            <li>
+                            <li class="featured">
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span><strong>Todo de Growth +</strong></span>
+                                <span><strong>Todo lo de Growth +</strong></span>
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
@@ -608,11 +766,15 @@
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span>CRM básico integrado</span>
+                                <span>Integración CRM completa</span>
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span>Analytics avanzado + dashboards</span>
+                                <span>Dashboard de analytics avanzado</span>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                                <span>A/B testing configurado</span>
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
@@ -620,141 +782,174 @@
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-                                <span>Capacitación de uso incluida</span>
-                            </li>
-                            <li>
-                                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                                 <span>Revisiones ilimitadas</span>
                             </li>
                         </ul>
                         
-                        <div class="paquete-results">
-                            <div class="result-item">
-                                <span class="result-value">+520%</span>
-                                <span class="result-label">ROI promedio</span>
+                        <div class="paquete-result">
+                            <span class="result-icon">💎</span>
+                            <div class="result-data">
+                                <span class="result-value">+$52k</span>
+                                <span class="result-label">ingresos adicionales/mes</span>
                             </div>
                         </div>
                         
-                        <a href="#contacto" class="btn btn-outline paquete-btn">
+                        <a href="#contacto" class="btn btn-outline paquete-btn magnetic-btn">
                             <span>Solicitar propuesta</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </div>
                 
                 <div class="paquetes-guarantee">
-                    <div class="guarantee-badge">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                    </div>
+                    <div class="guarantee-icon">🛡️</div>
                     <div class="guarantee-content">
                         <h4>Garantía de satisfacción 100%</h4>
-                        <p>Si no estás completamente satisfecho con el resultado, trabajamos hasta que lo estés o te devolvemos tu dinero. Sin preguntas.</p>
+                        <p>Si no estás completamente satisfecho con el resultado, te devolvemos el dinero. Sin preguntas, sin complicaciones.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PROCESO SECTION -->
+        <!-- ============== PROCESO SECTION ============== -->
         <section id="proceso" class="section section-proceso">
+            <div class="section-bg dark">
+                <div class="bg-gradient-mesh"></div>
+            </div>
+            
             <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Proceso</span>
+                <div class="section-header light">
+                    <span class="section-tag light">
+                        <span class="tag-dot"></span>
+                        Nuestro Proceso
+                    </span>
                     <h2 class="section-title">
-                        <span class="title-reveal">De la idea a los resultados</span>
-                        <span class="title-reveal highlight">en 4 pasos simples</span>
+                        De la idea a los resultados<br>
+                        <span class="text-gradient">en 4 simples pasos</span>
                     </h2>
-                    <p class="section-subtitle">
-                        Un proceso diseñado para maximizar tu tiempo y garantizar resultados. 
-                        Sin complicaciones técnicas, solo soluciones.
+                    <p class="section-desc">
+                        Un proceso diseñado para ser simple, rápido y efectivo. 
+                        Tú te enfocas en tu negocio, nosotros en generar resultados.
                     </p>
                 </div>
                 
                 <div class="proceso-timeline">
                     <div class="timeline-line">
-                        <div class="timeline-progress"></div>
+                        <div class="line-progress" id="timeline-progress"></div>
                     </div>
                     
-                    <div class="proceso-step" data-step="1">
-                        <div class="step-marker">
-                            <span class="step-number">01</span>
-                            <div class="step-pulse"></div>
+                    <div class="proceso-steps">
+                        <div class="proceso-step" data-step="1">
+                            <div class="step-marker">
+                                <span class="step-number">01</span>
+                                <div class="step-pulse"></div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-icon">💬</div>
+                                <h3>Conversamos</h3>
+                                <p>Llamada de 15 minutos para entender tu negocio, objetivos y audiencia. Totalmente gratis y sin compromiso.</p>
+                                <div class="step-time">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                    <span>15 minutos</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="step-content">
-                            <div class="step-icon">💬</div>
-                            <h3>Conversamos</h3>
-                            <p>Analizamos tu negocio, objetivos y clientes ideales. Entendemos qué resultados quieres lograr.</p>
-                            <span class="step-time">15 minutos</span>
+                        
+                        <div class="proceso-step" data-step="2">
+                            <div class="step-marker">
+                                <span class="step-number">02</span>
+                                <div class="step-pulse"></div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-icon">📋</div>
+                                <h3>Estrategia</h3>
+                                <p>Diseñamos la estructura, copywriting y elementos de conversión personalizados para tu negocio específico.</p>
+                                <div class="step-time">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                    <span>24 horas</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="proceso-step" data-step="3">
+                            <div class="step-marker">
+                                <span class="step-number">03</span>
+                                <div class="step-pulse"></div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-icon">✨</div>
+                                <h3>Creación</h3>
+                                <p>Construimos tu landing page con todos los elementos de conversión optimizados y animaciones profesionales.</p>
+                                <div class="step-time">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                    <span>48-72 horas</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="proceso-step" data-step="4">
+                            <div class="step-marker">
+                                <span class="step-number">04</span>
+                                <div class="step-pulse"></div>
+                            </div>
+                            <div class="step-content">
+                                <div class="step-icon">🚀</div>
+                                <h3>Lanzamiento</h3>
+                                <p>Publicamos tu landing y empiezas a recibir leads cualificados y ventas automáticamente. ¡Es hora de crecer!</p>
+                                <div class="step-time">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                    <span>¡En vivo!</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="proceso-step" data-step="2">
-                        <div class="step-marker">
-                            <span class="step-number">02</span>
-                            <div class="step-pulse"></div>
-                        </div>
-                        <div class="step-content">
-                            <div class="step-icon">🎯</div>
-                            <h3>Estrategia</h3>
-                            <p>Diseñamos la estructura y mensaje de tu landing basados en tu propuesta única de valor.</p>
-                            <span class="step-time">24 horas</span>
-                        </div>
-                    </div>
-                    
-                    <div class="proceso-step" data-step="3">
-                        <div class="step-marker">
-                            <span class="step-number">03</span>
-                            <div class="step-pulse"></div>
-                        </div>
-                        <div class="step-content">
-                            <div class="step-icon">✨</div>
-                            <h3>Creación</h3>
-                            <p>Construimos tu landing page con todos los elementos de conversión optimizados.</p>
-                            <span class="step-time">48-72 horas</span>
-                        </div>
-                    </div>
-                    
-                    <div class="proceso-step" data-step="4">
-                        <div class="step-marker">
-                            <span class="step-number">04</span>
-                            <div class="step-pulse"></div>
-                        </div>
-                        <div class="step-content">
-                            <div class="step-icon">🚀</div>
-                            <h3>Lanzamiento</h3>
-                            <p>Publicamos tu landing y empiezas a recibir leads cualificados automáticamente.</p>
-                            <span class="step-time">¡En vivo!</span>
-                        </div>
-                    </div>
+                </div>
+                
+                <div class="proceso-cta">
+                    <a href="#contacto" class="btn btn-primary btn-lg magnetic-btn">
+                        <span class="btn-bg"></span>
+                        <span>Empezar mi proyecto ahora</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- TESTIMONIOS SECTION -->
+        <!-- ============== TESTIMONIOS SECTION ============== -->
         <section id="testimonios" class="section section-testimonios">
-            <div class="testimonios-bg">
-                <div class="testimonios-gradient"></div>
+            <div class="section-bg">
+                <div class="bg-gradient-radial"></div>
             </div>
             
             <div class="container">
-                <div class="section-header light">
-                    <span class="section-tag">Resultados reales</span>
+                <div class="section-header">
+                    <span class="section-tag">
+                        <span class="tag-dot"></span>
+                        Resultados Reales
+                    </span>
                     <h2 class="section-title">
-                        <span class="title-reveal">Empresarios que ya</span>
-                        <span class="title-reveal highlight">multiplicaron sus ventas</span>
+                        Empresarios que ya<br>
+                        <span class="text-gradient">multiplicaron sus ventas</span>
                     </h2>
+                    <p class="section-desc">
+                        No lo decimos nosotros. Lo dicen nuestros clientes y sus resultados.
+                    </p>
                 </div>
                 
-                <div class="testimonios-slider">
-                    <div class="testimonios-track">
+                <div class="testimonios-carousel">
+                    <div class="testimonios-track" id="testimonios-track">
                         <div class="testimonio-card">
                             <div class="testimonio-content">
-                                <div class="testimonio-rating">★★★★★</div>
-                                <p class="testimonio-text">"Antes invertía $2,000 al mes en publicidad sin resultados. Ahora con mi landing page, cada $1 invertido me genera $8 en ventas. <strong>La mejor inversión que he hecho.</strong>"</p>
-                                <div class="testimonio-result">
-                                    <span class="result-label">Resultado:</span>
-                                    <span class="result-value">+$47,000/mes en ventas</span>
-                                </div>
+                                <div class="testimonio-stars">★★★★★</div>
+                                <p class="testimonio-text">"Antes invertía $2,000 al mes en publicidad sin resultados. Ahora con mi landing page, cada $1 invertido me genera $8 en ventas. <strong>La mejor inversión que he hecho para mi negocio.</strong>"</p>
+                            </div>
+                            <div class="testimonio-result">
+                                <span class="result-label">Resultado:</span>
+                                <span class="result-value">+$47,000/mes en ventas</span>
                             </div>
                             <div class="testimonio-author">
                                 <div class="author-avatar">MR</div>
@@ -767,12 +962,12 @@
                         
                         <div class="testimonio-card">
                             <div class="testimonio-content">
-                                <div class="testimonio-rating">★★★★★</div>
-                                <p class="testimonio-text">"Tenía una web que no generaba ni un lead. En 30 días con mi nueva landing, conseguí <strong>127 clientes potenciales</strong> y cerré 34 ventas. Increíble."</p>
-                                <div class="testimonio-result">
-                                    <span class="result-label">Resultado:</span>
-                                    <span class="result-value">127 leads en 30 días</span>
-                                </div>
+                                <div class="testimonio-stars">★★★★★</div>
+                                <p class="testimonio-text">"Tenía una web que no generaba ni un lead. En 30 días con mi nueva landing, conseguí <strong>127 clientes potenciales</strong> y cerré 34 ventas. Increíble transformación."</p>
+                            </div>
+                            <div class="testimonio-result">
+                                <span class="result-label">Resultado:</span>
+                                <span class="result-value">127 leads en 30 días</span>
                             </div>
                             <div class="testimonio-author">
                                 <div class="author-avatar">CG</div>
@@ -785,12 +980,12 @@
                         
                         <div class="testimonio-card">
                             <div class="testimonio-content">
-                                <div class="testimonio-rating">★★★★★</div>
+                                <div class="testimonio-stars">★★★★★</div>
                                 <p class="testimonio-text">"Mi competencia llevaba años adelante. En 3 meses, pasé de ser invisible a ser <strong>el referente de mi sector</strong>. La credibilidad que proyecta mi landing es impresionante."</p>
-                                <div class="testimonio-result">
-                                    <span class="result-label">Resultado:</span>
-                                    <span class="result-value">Líder de mercado local</span>
-                                </div>
+                            </div>
+                            <div class="testimonio-result">
+                                <span class="result-label">Resultado:</span>
+                                <span class="result-value">Líder de mercado local</span>
                             </div>
                             <div class="testimonio-author">
                                 <div class="author-avatar">AP</div>
@@ -803,12 +998,12 @@
                         
                         <div class="testimonio-card">
                             <div class="testimonio-content">
-                                <div class="testimonio-rating">★★★★★</div>
-                                <p class="testimonio-text">"Pensé que una buena web costaría $10,000. Conseguí resultados mejores por una fracción. <strong>El ROI fue positivo desde la primera semana.</strong>"</p>
-                                <div class="testimonio-result">
-                                    <span class="result-label">Resultado:</span>
-                                    <span class="result-value">ROI positivo en 7 días</span>
-                                </div>
+                                <div class="testimonio-stars">★★★★★</div>
+                                <p class="testimonio-text">"Pensé que una buena web costaría $10,000. Conseguí resultados mejores por una fracción. <strong>El ROI fue positivo desde la primera semana.</strong> Totalmente recomendado."</p>
+                            </div>
+                            <div class="testimonio-result">
+                                <span class="result-label">Resultado:</span>
+                                <span class="result-value">ROI positivo en 7 días</span>
                             </div>
                             <div class="testimonio-author">
                                 <div class="author-avatar">JM</div>
@@ -818,37 +1013,72 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="testimonio-card">
+                            <div class="testimonio-content">
+                                <div class="testimonio-stars">★★★★★</div>
+                                <p class="testimonio-text">"Triplicamos nuestras citas en el primer mes. El formulario de WhatsApp fue un game-changer. <strong>Ahora tenemos lista de espera de clientes.</strong>"</p>
+                            </div>
+                            <div class="testimonio-result">
+                                <span class="result-label">Resultado:</span>
+                                <span class="result-value">3x más citas/mes</span>
+                            </div>
+                            <div class="testimonio-author">
+                                <div class="author-avatar">LS</div>
+                                <div class="author-info">
+                                    <span class="author-name">Laura Sánchez</span>
+                                    <span class="author-role">Fundadora, Estudio de Yoga</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="testimonios-logos">
-                    <p>Empresas que confían en nosotros</p>
-                    <div class="logos-track">
-                        <div class="logo-item">TechCorp</div>
-                        <div class="logo-item">GrowthLab</div>
-                        <div class="logo-item">InnovateMX</div>
-                        <div class="logo-item">ScaleUp</div>
-                        <div class="logo-item">VentasPro</div>
-                        <div class="logo-item">DigitalBoost</div>
+                <div class="testimonios-nav">
+                    <button class="nav-btn prev" id="testimonios-prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <div class="nav-dots" id="testimonios-dots"></div>
+                    <button class="nav-btn next" id="testimonios-next" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="trust-logos">
+                    <p>Confían en nosotros</p>
+                    <div class="logos-row">
+                        <div class="logo-item"><span>TechCorp</span></div>
+                        <div class="logo-item"><span>GrowthLab</span></div>
+                        <div class="logo-item"><span>InnovateMX</span></div>
+                        <div class="logo-item"><span>ScaleUp</span></div>
+                        <div class="logo-item"><span>VentasPro</span></div>
+                        <div class="logo-item"><span>DigitalBoost</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA FINAL / CONTACTO -->
+        <!-- ============== CONTACTO SECTION ============== -->
         <section id="contacto" class="section section-contacto">
-            <div class="contacto-bg">
-                <div class="contacto-gradient"></div>
-                <div class="contacto-particles" id="cta-particles"></div>
+            <div class="section-bg dark">
+                <div class="bg-gradient-mesh"></div>
+                <div class="bg-pattern"></div>
             </div>
             
             <div class="container">
                 <div class="contacto-wrapper">
                     <div class="contacto-content">
-                        <span class="section-tag">Da el primer paso</span>
+                        <span class="section-tag light">
+                            <span class="tag-dot"></span>
+                            Da el primer paso
+                        </span>
                         <h2 class="contacto-title">
-                            <span class="title-reveal">¿Listo para multiplicar</span>
-                            <span class="title-reveal highlight">tus ventas?</span>
+                            ¿Listo para multiplicar<br>
+                            <span class="text-gradient">tus ventas?</span>
                         </h2>
                         <p class="contacto-text">
                             Cada día que pasa, tu competencia captura a tus clientes potenciales. 
@@ -877,8 +1107,21 @@
                         </div>
                         
                         <div class="contacto-urgency">
-                            <div class="urgency-icon">⚡</div>
-                            <p><strong>Solo 3 espacios disponibles</strong> este mes para nuevos proyectos</p>
+                            <div class="urgency-pulse"></div>
+                            <div class="urgency-content">
+                                <span class="urgency-icon">⚡</span>
+                                <p><strong>Solo 3 espacios disponibles</strong> este mes para nuevos proyectos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contacto-whatsapp">
+                            <p>¿Prefieres escribirnos directamente?</p>
+                            <a href="https://wa.me/1234567890?text=Hola%2C%20quiero%20información%20sobre%20las%20landing%20pages" class="btn btn-whatsapp btn-lg magnetic-btn" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                </svg>
+                                <span>Escribir por WhatsApp</span>
+                            </a>
                         </div>
                     </div>
                     
@@ -892,65 +1135,65 @@
                             <div class="form-group">
                                 <label for="nombre">Tu nombre</label>
                                 <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" required>
+                                <span class="input-focus"></span>
                             </div>
                             
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                                <span class="input-focus"></span>
                             </div>
                             
                             <div class="form-group">
-                                <label for="negocio">Tipo de negocio</label>
-                                <select id="negocio" name="negocio" required>
-                                    <option value="" disabled selected>Selecciona tu industria</option>
-                                    <option value="servicios">Servicios profesionales</option>
-                                    <option value="ecommerce">E-commerce / Tienda online</option>
-                                    <option value="saas">SaaS / Software</option>
-                                    <option value="consultoria">Consultoría</option>
-                                    <option value="educacion">Educación / Cursos</option>
-                                    <option value="salud">Salud / Bienestar</option>
-                                    <option value="inmobiliaria">Inmobiliaria</option>
-                                    <option value="restaurante">Restaurante / Gastronomía</option>
-                                    <option value="otro">Otro</option>
+                                <label for="telefono">WhatsApp (opcional)</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="+1 234 567 8900">
+                                <span class="input-focus"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="negocio">¿A qué se dedica tu negocio?</label>
+                                <input type="text" id="negocio" name="negocio" placeholder="Ej: Consultoría, Ecommerce, Servicios..." required>
+                                <span class="input-focus"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="paquete">¿Qué paquete te interesa?</label>
+                                <select id="paquete" name="paquete" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="starter">Starter ($497)</option>
+                                    <option value="growth">Growth ($997) - Más popular</option>
+                                    <option value="enterprise">Enterprise ($2,497)</option>
+                                    <option value="no-se">No estoy seguro, quiero asesoría</option>
                                 </select>
+                                <span class="input-focus"></span>
                             </div>
                             
-                            <div class="form-group">
-                                <label for="mensaje">¿Cuál es tu mayor desafío ahora?</label>
-                                <textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntame sobre tu situación actual..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary btn-submit">
-                                <span class="btn-text">Quiero mi consulta gratuita</span>
-                                <span class="btn-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                            <button type="submit" class="btn btn-primary btn-submit magnetic-btn">
+                                <span class="btn-bg"></span>
+                                <span class="btn-text">Quiero mi consulta gratis</span>
+                                <span class="btn-loader">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10" stroke-dasharray="60" stroke-dashoffset="0"/>
                                     </svg>
                                 </span>
-                                <span class="btn-loading">
-                                    <svg class="spinner" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="60" stroke-linecap="round"/>
+                                <span class="btn-success">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 13l4 4L19 7"/>
                                     </svg>
                                 </span>
                             </button>
                             
                             <p class="form-disclaimer">
-                                🔒 Tu información está segura. Sin spam, lo prometemos.
+                                🔒 Tu información está segura. No spam, nunca.
                             </p>
                         </form>
-                        
-                        <div class="form-success" id="form-success">
-                            <div class="success-icon">✓</div>
-                            <h3>¡Mensaje enviado!</h3>
-                            <p>Te contactaremos en menos de 2 horas para agendar tu consulta gratuita.</p>
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- ============== FOOTER ============== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -959,42 +1202,39 @@
                         <span class="logo-icon">◆</span>
                         <span class="logo-text">ConvertPro</span>
                     </a>
-                    <p>Transformamos visitantes en clientes con landing pages de alto impacto.</p>
+                    <p>Transformamos negocios con landing pages de alto impacto que convierten visitantes en clientes.</p>
                 </div>
                 
                 <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Soluciones</h4>
+                    <div class="footer-col">
+                        <h4>Navegación</h4>
                         <ul>
-                            <li><a href="#paquetes">Landing Pages</a></li>
-                            <li><a href="#paquetes">Sitios Web</a></li>
-                            <li><a href="#paquetes">Funnels de Venta</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Empresa</h4>
-                        <ul>
+                            <li><a href="#problema">El Problema</a></li>
+                            <li><a href="#solucion">Solución</a></li>
+                            <li><a href="#paquetes">Paquetes</a></li>
                             <li><a href="#proceso">Proceso</a></li>
-                            <li><a href="#testimonios">Casos de éxito</a></li>
-                            <li><a href="#contacto">Contacto</a></li>
+                            <li><a href="#testimonios">Resultados</a></li>
                         </ul>
                     </div>
-                </div>
-                
-                <div class="footer-cta">
-                    <p>¿Listo para crecer?</p>
-                    <a href="#contacto" class="btn btn-primary btn-sm">
-                        Empezar ahora
-                    </a>
+                    <div class="footer-col">
+                        <h4>Contacto</h4>
+                        <ul>
+                            <li><a href="mailto:hola@convertpro.com">hola@convertpro.com</a></li>
+                            <li><a href="https://wa.me/1234567890" target="_blank">WhatsApp</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 ConvertPro. Todos los derechos reservados.</p>
+                <p>&copy; 2025 ConvertPro. Todos los derechos reservados.</p>
                 <div class="footer-social">
-                    <a href="#" aria-label="LinkedIn">in</a>
-                    <a href="#" aria-label="Instagram">ig</a>
-                    <a href="#" aria-label="Twitter">x</a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
